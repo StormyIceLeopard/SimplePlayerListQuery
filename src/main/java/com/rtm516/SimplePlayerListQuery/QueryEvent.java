@@ -28,7 +28,7 @@ public class QueryEvent implements Listener {
 		ServerPing.PlayerInfo[] playerInfo = new ServerPing.PlayerInfo[players.size()];
 	    for (int i = 0; i < playerInfo.length; i++) {
 	    	ProxiedPlayer player = (ProxiedPlayer) players.toArray()[i];
-	    	playerInfo[i] = new ServerPing.PlayerInfo(player.getDisplayName(), player.getUniqueId());
+	    	playerInfo[i] = new ServerPing.PlayerInfo(player.getDisplayName().replaceAll("§.", "").replaceAll("\[\S\]\s*", ""), player.getUniqueId());
 	    }
 		e.getResponse().getPlayers().setSample(playerInfo);
 	}
